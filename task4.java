@@ -19,7 +19,7 @@ class Seat{
 }
 public class Theater{
   private Seat[][] theaterSeats;
-  public Theater(int seatsPerRow,int tier1Rows,int tier2Rows){//a
+  public Theater(int seatsPerRow,int tier1Rows,int tier2Rows){
     theaterSeats = new Seat[tier1Rows + tier2Rows][seatsPerRow];
     for(int i =0; i < theaterSeats.length;i++){
      for(int j =0;j<theaterSeats[0].length;j++){
@@ -28,8 +28,8 @@ public class Theater{
      }
     }
   }
-  public boolean reassignSeat(int fromRow,int fromCol,int toRow,int toCol){//b
-    if(theaterSeats[toRow][toCol].isAvailable && theaterSeats[toRow][toCol].getTier<= theaterSeats[toRow][toCol].getTier[fromRow][fromCol]){
+  public boolean reassignSeat(int fromRow,int fromCol,int toRow,int toCol){
+    if(theaterSeats[toRow][toCol].isAvailable() && theaterSeats[toRow][toCol].getTier()<= theaterSeats[fromRow][fromCol].getTier()){
       theaterSeats[fromRow][fromCol].setAvailability(true);
       theaterSeats[toRow][toCol].setAvailability(false);
       return true;
